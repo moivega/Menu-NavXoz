@@ -11,35 +11,37 @@ var phrases = [
   'tecnologia'
 ]
 
-var phrasePara = document.querySelector('.phrase');
-var resultPara = document.querySelector('.result');
+/*var phrasePara = document.querySelector('.phrase');*/
+/*var resultPara = document.querySelector('.result');*/
+/*var diagnosticPara = document.querySelector('.output');*/
 
 var eventoMenu = document.querySelector('.menu');
 
-var diagnosticPara = document.querySelector('.output');
-
 var testBtn = document.querySelector('button');
 
-function randomPhrase() {
+/*function randomPhrase() {
   var number = Math.floor(Math.random() * phrases.length);
   return number;
-}
+}*/
 
 function testSpeech() {
   testBtn.disabled = true;
-  testBtn.textContent = 'Reconociento en proceso';
+  testBtn.textContent = 'Micrófono Off';
+  /*var phrase = phrases[randomPhrase()];*/
+  /*phrasePara.textContent = phrase;*/
+  /*resultPara.textContent = 'Correcto o Incorrecto?';*/
+  /*resultPara.style.background = 'rgba(0,0,0,0.2)';*/
+  /*diagnosticPara.textContent = '...mensaje de diagnostico';*/
 
-  var phrase = phrases[randomPhrase()];
-  phrasePara.textContent = phrase;
-  resultPara.textContent = 'Right or wrong?';
-  resultPara.style.background = 'rgba(0,0,0,0.2)';
-  diagnosticPara.textContent = '...diagnostic messages';
-
-  var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase +';';
   var recognition = new SpeechRecognition();
-  var speechRecognitionList = new SpeechGrammarList();
-  speechRecognitionList.addFromString(grammar, 1);
-  recognition.grammars = speechRecognitionList;
+  /*var speechRecognitionList = new SpeechGrammarList();
+
+  for (var i=0; i<phrases.lenght(); i++) {
+    var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrases[i] +';';
+    speechRecognitionList.addFromString(grammar, 1);
+  }
+
+  recognition.grammars = speechRecognitionList; */
   recognition.lang = 'es';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
@@ -47,24 +49,22 @@ function testSpeech() {
   recognition.start();
 
   recognition.onresult = function(event) {
-    // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
-    // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
-    // It has a getter so it can be accessed like an array
-    // The first [0] returns the SpeechRecognitionResult at position 0.
-    // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
-    // These also have getters so they can be accessed like arrays.
-    // The second [0] returns the SpeechRecognitionAlternative at position 0.
-    // We then return the transcript property of the SpeechRecognitionAlternative object
+
     var speechResult = event.results[0][0].transcript;
     diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
-    if(speechResult === phrase) {
-      resultPara.textContent = 'I heard the correct phrase!';
-      resultPara.style.background = 'lime';
-      eventoMenu.getElementsByClassName("phrase").onclick="href='phrase'+'.html'";
-    } else {
-      resultPara.textContent = 'That didn\'t sound right.';
-      resultPara.style.background = 'red';
+
+    for (var i=0; i<phrases.lenght(); i++) {
+      if (speechResult == phrases[i]) {
+        /* resultPara.textContent = 'Yo escucho la frase correcta!';
+        resultPara.style.background = 'lime'; */
+        eventoMenu.getElementsByClassName("phrases[i]").onclick="href='phrases[i]'+'.html'";
+      }
+    /*  else {
+        resultPara.textContent = 'No suena muy bien!';
+        resultPara.style.background = 'blue';
+      } */
     }
+
 
     console.log('Confidence: ' + event.results[0][0].confidence);
   }
@@ -72,15 +72,16 @@ function testSpeech() {
   recognition.onspeechend = function() {
     recognition.stop();
     testBtn.disabled = false;
-    testBtn.textContent = 'Start new test';
+    testBtn.textContent = 'Activar Micrófono';
   }
 
   recognition.onerror = function(event) {
     testBtn.disabled = false;
-    testBtn.textContent = 'Start new test';
-    diagnosticPara.textContent = 'Error occurred in recognition: ' + event.error;
+    testBtn.textContent = 'Activar Micrófono';
+    diagnosticPara.textContent = 'Error ocurrido en reconocimiento: ' + event.error;
   }
 
 }
 
 testBtn.addEventListener('click', testSpeech);
+
