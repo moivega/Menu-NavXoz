@@ -13,6 +13,9 @@ var phrases = [
 
 var phrasePara = document.querySelector('.phrase');
 var resultPara = document.querySelector('.result');
+
+var eventoMenu = document.querySelector('.menu');
+
 var diagnosticPara = document.querySelector('.output');
 
 var testBtn = document.querySelector('button');
@@ -24,7 +27,7 @@ function randomPhrase() {
 
 function testSpeech() {
   testBtn.disabled = true;
-  testBtn.textContent = 'Test in progress';
+  testBtn.textContent = 'Reconociento en proceso';
 
   var phrase = phrases[randomPhrase()];
   phrasePara.textContent = phrase;
@@ -37,7 +40,7 @@ function testSpeech() {
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
   recognition.grammars = speechRecognitionList;
-  recognition.lang = 'en-US';
+  recognition.lang = 'es';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
@@ -57,6 +60,7 @@ function testSpeech() {
     if(speechResult === phrase) {
       resultPara.textContent = 'I heard the correct phrase!';
       resultPara.style.background = 'lime';
+      eventoMenu.getElementsByClassName("phrase").onclick="href='phrase'+'.html'";
     } else {
       resultPara.textContent = 'That didn\'t sound right.';
       resultPara.style.background = 'red';
