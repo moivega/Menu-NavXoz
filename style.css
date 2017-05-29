@@ -1,54 +1,77 @@
-body, html {
-  margin: 0;
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans');
+  src: url(opensans.woff) format('woff');
 }
 
-html {
-  height: 100%;
-  background-color: #3498db;
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  width: 100%;
 }
 
 body {
-  height: inherit;
-  overflow: hidden;
-}
-
-h1, p {
-  font-family: sans-serif;
+  background-color: #2ecc71;
   text-align: center;
+  color: #FFFFFF;
 }
 
-div p {
-  padding: 20px;
-  background-color: #3498db;
+header {
+  text-align: left;
+  background-color: #2980b9;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700px;
+  padding-left: 5%;
 }
 
-div {
-  overflow: auto;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
+.menu {
+  margin-top: 15px;
+  background-color: #34495e;
+  margin-left: 20%;
+  padding-left: 5%;
+  width: 75%;
+  font-weight: bold;
+}
+
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 button {
-  margin: 0 auto;
+  margin-left: 10px;
   display: block;
   font-size: 1.1rem;
-  width: 170px;
+  width: 200px;
   line-height: 2;
-  margin-top: 30px;
+  margin-top: 10px;
+  background-color: #34495e;
+  color: white;
 }
 
-@media all and (max-height: 410px) {
-  div {
-    position: static;
-  }
+div {
+/*  background-color: #27ae60; */
 }
 
 .phrase {
+  margin-top: 15%;
+  background: #34495e;
+  font-weight: bold;
+}
+
+.result {
+  margin-top: 3%;
+  background: #34495e;
   font-weight: bold;
 }
 
 .output {
+  margin-top: 3%;
+  background: #34495e;
   font-style: italic;
 }
+
