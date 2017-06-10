@@ -32,9 +32,9 @@ function testSpeech() {
       var speechResult = event.results[0][0].transcript;
       for (i = 0; i < navElement.length; i++) {
         if (speechResult == navElement[i]) 
-          document.getElementById(navElement[i]).className = "mdl-layout__tab is-active";
-          /*var url = document.getElementById(navElement[i]);*/
-          /*window.location.assign(url);*/
+          var url = document.getElementById(navElement[i]);
+          url.className = "mdl-layout__tab is-active";
+          window.location.assign(url);
           /*url.click();*/
         }
       }
