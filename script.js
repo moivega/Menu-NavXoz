@@ -33,8 +33,8 @@ function testSpeech() {
       for (i = 0; i < navElement.length; i++) {
         if (speechResult == navElement[i]) {
           var url = document.getElementById(navElement[i]);
-          window.location.assign(url);
-          /*url.click();*/
+          /*window.location.assign(url);*/
+          url.click();
         }
       }
       console.log('Confidence: ' + event.results[0][0].confidence);
