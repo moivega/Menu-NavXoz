@@ -36,9 +36,9 @@ function testSpeech() {
       var speechResult = event.results[0][0].transcript;
       for (i = 0; i < navElement.length; i++) {
         if (speechResult == navElement[i]) {
-          /*var url = document.getElementById(navElement[i]);*/
-          /*url.click();*/
-          window.location.assign("https://github.com/moivega/");
+          var url = document.getElementById(navElement[i]);
+          url.click();
+          /*window.location.assign("https://github.com/moivega/");*/
         }
       }
       console.log('Confidence: ' + event.results[0][0].confidence);
