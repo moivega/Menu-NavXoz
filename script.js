@@ -31,10 +31,10 @@ function testSpeech() {
       // We then return the transcript property of the SpeechRecognitionAlternative object
       var speechResult = event.results[0][0].transcript;
       for (i = 0; i < navElement.length; i++) {
-        if (speechResult == navElement[i]) 
+        if (speechResult == navElement[i]) {
           var url = document.getElementById(navElement[i]);
-          /*url.className = "mdl-layout__tab is-active";*/
-          window.location.assign(url);
+          url.className = "mdl-layout__tab is-active";
+          /*window.location.assign(url);*/
           /*url.click();*/
         }
       }
