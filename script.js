@@ -33,10 +33,10 @@ function testSpeech() {
       for (i = 0; i < navElement.length; i++) {
         if (speechResult == navElement[i]) {
           var url = document.getElementById(navElement[i]);
-          url.classList.toggle("mdl-layout__tab-panel is-active");
-          /*url.className = "mdl-layout__tab-panel is-active";*/
+          /*url.classList.toggle("mdl-layout__tab-panel is-active");*/
+           url.className = "mdl-layout__tab-panel is-active";
           /*window.location.assign(url);*/
-          /*url.click();*/
+          url.click();
         }
       }
       console.log('Confidence: ' + event.results[0][0].confidence);
