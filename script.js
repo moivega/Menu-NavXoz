@@ -4,11 +4,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var navElement = ['rojo', 'verde', 'azul', 'amarillo', 'magenta', 'cian', 'blanco', 'negro'];
-var grammar = '#JSGF V1.0; grammar navElement;';
-var i;
-for (i = 0; i < navElement.length; i++) {
-  grammar = grammar + ' public <navElement' + i + '> = ' + navElement[i] + ';';
-}
+var grammar = '#JSGF V1.0; grammar navElement; public <navElement> = ' + navElement.join(' | ') + ' ;';
 
 var testBtn = document.querySelector('button');
 
@@ -19,7 +15,7 @@ function testSpeech() {
     var speechRecognitionList = new SpeechGrammarList();
     speechRecognitionList.addFromString(grammar, 1);
     recognition.grammars = speechRecognitionList;
-    recognition.lang = 'es-Latin American';
+    recognition.lang = 'es';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
     recognition.start();
