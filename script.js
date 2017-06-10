@@ -3,8 +3,8 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-var navElement = ['rojo', 'verde', 'azul', 'amarillo', 'magenta', 'cian', 'blanco', 'negro']
-var grammar = '#JSGF V1.0; grammar navElement;'
+var navElement = ['rojo', 'verde', 'azul', 'amarillo', 'magenta', 'cian', 'blanco', 'negro'];
+var grammar = '#JSGF V1.0; grammar navElement;';
 var i;
 for (i = 0; i < navElement.length; i++) {
   grammar = grammar + ' public <navElement' + i + '> = ' + navElement[i] + ';';
@@ -37,8 +37,8 @@ function testSpeech() {
       for (i = 0; i < navElement.length; i++) {
         if (speechResult == navElement[i]) {
           var url = document.getElementById(navElement[i]);
-          url.click();
-          /*window.location.assign(url);*/
+          /*url.click();*/
+          window.location.assign(url);
         }
       }
       console.log('Confidence: ' + event.results[0][0].confidence);
