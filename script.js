@@ -3,7 +3,7 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-var navElement = ['rojo', 'VERDE', 'azul', 'amarillo', 'magenta', 'cian', 'blanco', 'negro']
+var navElement = ['rojo', 'verde', 'azul', 'amarillo', 'magenta', 'cian', 'blanco', 'negro']
 var grammar = '#JSGF V1.0; grammar navElement;'
 var i;
 for (i = 0; i < navElement.length; i++) {
