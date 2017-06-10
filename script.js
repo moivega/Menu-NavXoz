@@ -34,7 +34,7 @@ function testSpeech() {
         if (speechResult == navElement[i]) {
           var url = document.getElementById(navElement[i]);
           url.className = "mdl-layout__tab-panel is-active";
-          window.location.assign(url);
+          /*window.location.assign(url);*/
           /*url.click();*/
         }
       }
