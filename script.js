@@ -33,7 +33,8 @@ function testSpeech() {
       for (i = 0; i < navElement.length; i++) {
         if (speechResult == navElement[i]) {
           var url = document.getElementById(navElement[i]);
-          window.location.assign("https://github.com");
+          url.className = "mdl-layout__tab-panel is-active";
+          window.location.assign(url);
           /*url.click();*/
         }
       }
